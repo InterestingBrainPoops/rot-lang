@@ -12,4 +12,12 @@ Everything has predifined behaviour, and you can expect the same line of code to
 Since everything has a predined number of accesses, you can rely on variables getting cleaned up once they are used up.
 Lifetimes are immutable, so you explicitly need to define a proper length lifetime at variable creation.
 
+## How to run the proof of concept?
+after you clone the repo:  
+```bash
+cd src
+go run main.go
+```
+
+
 ###### this is an esoteric language.
