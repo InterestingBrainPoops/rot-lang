@@ -7,7 +7,6 @@ import (
 	"os"
 
 	"strings"
-	"./tokens"
 	"./std"
 )
 
@@ -17,17 +16,6 @@ import (
 // "v a = 3, 4" becomes 
 // ["v", "a", "=", "3", "4"]
 
-func Parse(line string) []string{
-	return strings.FieldsFunc(line, isDelimiter)
-}
-func isDelimiter(r rune) bool{
-	for _, x := range tokens.Delimiters{
-		if(x == r){
-			return true
-		}
-	}
-	return false
-}
 func main() {
 	
 	vars := make(map[string]*std.Variable)
@@ -41,8 +29,8 @@ func main() {
 	}
     scanner := bufio.NewScanner(file)
     for scanner.Scan() {
-		parsedline := Parse(strings.TrimSpace(scanner.Text())) // parses the line
-		std.Stdlib[parsedline[0]](vars, parsedline)
+		parsedline := std.Parse(strings.TrimSpace(scanner.Text())) // parses the line
+		std.Stdlib[parsedline[0]](vars, scanner.Text())
 		// essentially deallocates any vars that have run out of life
 		for x := range vars{
 			if(vars[x].Lifetime <= 0){

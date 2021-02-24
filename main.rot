@@ -1,6 +1,2 @@
-v e = 2, 3
-print(e) hello
-print(e)
-extend(e, 2)
-print(e)
+v e = "Hello world!", 3
 print(e)
