@@ -1,6 +1,6 @@
-v e = 2,3
+v e = 2, 3
+print(e) hello
 print(e)
-print(e)
-print(e)
+extend(e, 2)
 print(e)
 print(e)
