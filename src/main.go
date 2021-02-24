@@ -2,24 +2,15 @@ package main
 
 import (
 	"bufio"
-	"fmt"
+
 	"log"
 	"os"
-	"strconv"
+
 	"strings"
 	"./tokens"
+	"./std"
 )
-type variable struct{
-	lifetime int
-	value interface{}
-}
-func (v *variable) rmhealth(howmuch int){
-	v.lifetime --;
-}
-func strtoint(param string) int {
-    result, _ := strconv.Atoi(param)
-    return result
-}
+
 // splits a function up into a list of usable directions/parts. 
 // "print(x)" becomes
 // ["print","x"]
@@ -39,26 +30,22 @@ func isDelimiter(r rune) bool{
 }
 func main() {
 	
-	vars := make(map[string]*variable)
+	vars := make(map[string]*std.Variable)
     file, err := os.Open("../main.rot")
     if err != nil {
         log.Fatal(err)
     }
     defer file.Close()
-
+	for _, x := range std.Functions{
+		std.Stdlib[x.Name] = x.Function
+	}
     scanner := bufio.NewScanner(file)
     for scanner.Scan() {
 		parsedline := Parse(strings.TrimSpace(scanner.Text())) // parses the line
-		switch  parsedline[0]{
-		case "v": // variable declaration
-			vars[parsedline[1]] = &variable{value:parsedline[3], lifetime: strtoint(parsedline[4])}
-		case "print": // print statement
-			fmt.Println(vars[parsedline[1]].value)
-			vars[parsedline[1]].rmhealth(1)
-		}
+		std.Stdlib[parsedline[0]](vars, parsedline)
 		// essentially deallocates any vars that have run out of life
 		for x := range vars{
-			if(vars[x].lifetime <= 0){
+			if(vars[x].Lifetime <= 0){
 				delete(vars, x)
 			}
 		}
