@@ -25,12 +25,12 @@ func main() {
     }
     defer file.Close()
 	for _, x := range std.Functions{
-		std.Stdlib[x.Name] = x.Function
+		std.UsableFunctions[x.Name] = x.Function
 	}
     scanner := bufio.NewScanner(file)
     for scanner.Scan() {
 		parsedline := std.Parse(strings.TrimSpace(scanner.Text())) // parses the line
-		std.Stdlib[parsedline[0]](vars, scanner.Text())
+		std.UsableFunctions[parsedline[0]](vars, scanner.Text())
 		// essentially deallocates any vars that have run out of life
 		for x := range vars{
 			if(vars[x].Lifetime <= 0){

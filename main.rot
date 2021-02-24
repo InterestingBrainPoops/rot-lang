@@ -1,2 +1,5 @@
+import stdlib
 v e = "Hello world!", 3
-print(e)
+print e
+print(e
+print e)

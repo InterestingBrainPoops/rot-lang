@@ -23,9 +23,9 @@ go run main.go
 - [x] Create variables, deallocate after lifetime ends  
 - [x] Extend lifetimes and deallocate variables
 - [x] Make it simple to develop  
-- [ ] User defined functions
-- [ ] Compile
-- [ ] Modulify
-- [ ] Make it statically typed
-
+- [ ] Imports  
+- [ ] User defined functions  
+- [ ] Compile  
+- [ ] Make it statically typed  
+  
 ###### this is an esoteric language.
