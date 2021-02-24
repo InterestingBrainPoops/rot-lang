@@ -1,5 +1,7 @@
 import stdlib
-v e = "Hello world!", 3
+import mutate
+v e = "Hello ", 3
 print e
 print(e
+vmod e World!
 print e)
