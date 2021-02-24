@@ -1,3 +1,5 @@
+![rot-lang Logo](./rot-lang-logo.png)
+
 # rot-lang
 A language focused on consistency and memory usage.
 
