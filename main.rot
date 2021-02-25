@@ -1,7 +1,11 @@
 import stdlib
 import mutate
+import basket
+b basket string, 9, 4
 v e = "Hello ", 3
-print e
-print(e
+append basket "boink"
+print basket
+set basket 3 "number 3"
+print basket
 vmod e World!
 print e)

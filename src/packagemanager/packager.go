@@ -2,7 +2,8 @@ package packagemanager
 
 import ("../std"
  "../mutate"
-"../common")
+"../common"
+"../slice")
 
 
 func IMPORT(vars map[string]*common.Variable, line string){
@@ -12,7 +13,7 @@ func IMPORT(vars map[string]*common.Variable, line string){
 		UsableFunctions[x.Name] = x.Function
 	}
 }
-var packages = map[string][]common.Identifier{"stdlib":std.Funcs,"mutate":mutate.Funcs,}
+var packages = map[string][]common.Identifier{"stdlib":std.Funcs,"mutate":mutate.Funcs,"basket":slice.Funcs}
 
 var Functions = [...]common.Identifier{common.Identifier{Function: IMPORT, Name:"import"}}
 
