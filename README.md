@@ -26,6 +26,7 @@ go run main.go
 - [x] Extend lifetimes and deallocate variables
 - [x] Make it simple to develop  
 - [x] Imports  
+- [x] Lists
 - [ ] User defined functions  
 - [ ] Compile  
 - [ ] Make it statically typed  
